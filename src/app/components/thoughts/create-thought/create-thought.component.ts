@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-create-thought',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './create-thought.component.html',
   styleUrl: './create-thought.component.css',
 })
@@ -39,6 +40,6 @@ export class CreateThoughtComponent {
   }
 
   cancelarPensamento() {
-    alert('Pensamento cancelado!');
+    console.log('Pensamento cancelado!');
   }
 }

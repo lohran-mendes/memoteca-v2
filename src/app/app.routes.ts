@@ -6,17 +6,15 @@ import { ListThoughtComponent } from './components/thoughts/list-thought/list-th
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'criar-componentes',
+    redirectTo: 'criar-pensamentos',
     pathMatch: 'full',
   },
   {
-    path: 'criar-componentes',
-    pathMatch: 'full',
+    path: 'criar-pensamentos',
     component: CreateThoughtComponent,
   },
   {
-    path: 'listar-componentes',
-    pathMatch: 'full',
+    path: 'listar-pensamentos',
     component: ListThoughtComponent,
   },
 ];
