@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ThoughtComponent } from "../thought/thought.component";
 @Component({
   selector: 'app-create-thought',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, ThoughtComponent],
   templateUrl: './create-thought.component.html',
   styleUrl: './create-thought.component.css',
 })

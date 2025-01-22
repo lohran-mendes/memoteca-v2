@@ -1,0 +1,15 @@
+<div [ngClass]="['modelo', 'ff-roboto-mono', modeloPensamento()]">
+  <img [src]="caminhoModeloPensamento()" alt="Aspas azuis" />
+  <p class="conteudo">
+    @if(entradaPensamento() != '') {
+    {{ entradaPensamento() }}
+    } @else {Aqui vai o pensamento}
+  </p>
+  <p class="autoria">
+    <b>
+      @if(entradaAutoria() != '') {
+      {{ entradaAutoria() }}
+      } @else {Aqui vai a autoria}
+    </b>
+  </p>
+</div>
