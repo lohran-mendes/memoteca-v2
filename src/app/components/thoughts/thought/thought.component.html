@@ -1,0 +1,26 @@
+<div
+class="ff-roboto-mono pensamento"
+[ngClass]="dynamicClasses"
+>
+  <img src="/img/{{ enteredThought().modelo }}.png" alt="Aspas coloridas" />
+  <p class="conteudo">
+    @if(enteredThought().conteudo != '') {
+    {{ enteredThought().conteudo }}
+    } @else {Aqui vai o pensamento}
+  </p>  
+  <p class="autoria">
+    <b>
+      @if(enteredThought().autoria != '') {
+      {{ enteredThought().autoria }}
+      } @else {Aqui vai a autoria}
+    </b>
+  </p>
+  <div class="acoes">
+    <button class="botao-editar">
+      <img src="/img/icone-editar.png" alt="botão de editar" />
+    </button>
+    <button class="botao-excluir">
+      <img src="/img/icone-excluir.png" alt="botão de excluir" />
+    </button>
+  </div>
+</div>
