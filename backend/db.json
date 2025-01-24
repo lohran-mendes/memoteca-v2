@@ -1,0 +1,22 @@
+{
+  "pensamentos": [
+    {
+      "id": 1,
+      "conteudo": "Que bom que você veio!",
+      "autoria": "Lohran",
+      "modelo": "modelo1"
+    },
+    {
+      "id": 2,
+      "conteudo": "Quero ir no girafas para comprar um lanche infantil e ganhar um brinde!",
+      "autoria": "Maria",
+      "modelo": "modelo2"
+    },
+    {
+      "id": 3,
+      "conteudo": "Eu abençoo você meu filho, te a amo!",
+      "autoria": "Marcela",
+      "modelo": "modelo3"
+    }
+  ]
+}
