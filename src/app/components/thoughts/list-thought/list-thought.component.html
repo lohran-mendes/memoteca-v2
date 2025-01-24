@@ -3,4 +3,17 @@
     <h2 class="ff-inter">Meu Mural</h2>
     <button class="botao" routerLink="/criar-pensamentos">Adicionar Pensamento</button>
   </header>
+  @if(listThought.length > 0){
+    <div class="mural">
+      @for (thought of listThought; track thought){
+        <div>
+          <app-thought [enteredThought]="thought"/>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="sem-pensamentos ff-inter">
+      <p>Ainda não há pensamentos cadastrados!</p>
+    </div>
+  }
 </section>

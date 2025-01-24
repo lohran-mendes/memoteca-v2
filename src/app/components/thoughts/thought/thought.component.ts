@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, input, WritableSignal } from '@angular/core';
 
 @Component({
   selector: 'app-thought',
@@ -8,11 +8,19 @@ import { Component, input } from '@angular/core';
   styleUrl: './thought.component.css',
 })
 export class ThoughtComponent {
-  entradaAutoria = input.required<string>();
-  entradaPensamento = input.required<string>();
-  modeloPensamento = input.required<string>();
+  enteredThought = input.required<{
+    id: string;
+    conteudo: string;
+    autoria: string;
+    modelo: string;
+  }>();
 
-  caminhoModeloPensamento() {
-    return `/img/${this.modeloPensamento()}.png`;
+  getWidthClass() {
+    if (this.enteredThought().conteudo.length >= 256) {
+      return 'pensamento-g';
+    } return'pensamento-p';
+  }
+  get dynamicClasses(): string[] {
+    return [this.enteredThought().modelo, this.getWidthClass()];
   }
 }
