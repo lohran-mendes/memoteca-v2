@@ -1,7 +1,8 @@
-import { Component, OnChanges, signal, SimpleChanges } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
-import { ThoughtComponent } from "../thought/thought.component";
+import { Router, RouterLink } from '@angular/router';
+import { type Thougth } from '../../../interfaces/thought';
+import { ThoughtService } from '../../../services/thought.service';
 @Component({
   selector: 'app-create-thought',
   imports: [FormsModule, RouterLink],
@@ -9,36 +10,21 @@ import { ThoughtComponent } from "../thought/thought.component";
   styleUrl: './create-thought.component.css',
 })
 export class CreateThoughtComponent {
-  modeloCard = signal<string>('');
-  pensamento = signal({
+  thoughtService = inject(ThoughtService);
+  router = inject(Router)
+  pensamentoModelo = signal<Thougth>({
     conteudo: '',
     autoria: '',
-  })
-pensamentos: {
-  id: string,
-  conteudo: string,
-  autoria: string,
-  modelo: string
-}[] = [];
-  criarPensamento() {
-    if (
-      this.pensamento().conteudo.length < 3 ||
-      this.pensamento().autoria.length < 3 ||
-      !this.modeloCard()
-    )
-      return alert('Requisitos não cumpridos!');
+    modelo: '',
+  });
 
-    this.pensamentos.push({
-      id: (this.pensamentos.length+1).toString(),
-      conteudo: this.pensamento().conteudo,
-      autoria: this.pensamento().autoria,
-      modelo: this.modeloCard(),
+  criarPensamentoModelo() {
+    this.thoughtService.createThought(this.pensamentoModelo()).subscribe({
+      next: () => this.router.navigate(['listar-pensamentos'])
     });
-    console.log(this.pensamentos);
-    alert('Pensamento criado!');
-  }
+    }
 
-  cancelarPensamento() {
-    console.log('Pensamento cancelado!');
+  cancelarPensamentoModelo() {
+    this.router.navigate(['listar-pensamentos'])
   }
 }
