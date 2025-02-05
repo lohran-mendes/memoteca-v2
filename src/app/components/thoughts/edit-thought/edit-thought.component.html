@@ -1,0 +1,131 @@
+<section class="container editar-pensamentos ff-inter">
+  <header class="header">
+    <h2>Adicione um <br />pensamento novo:</h2>
+  </header>
+  <form>
+    <label for="pensamento">Pensamento</label>
+    <input
+      type="textarea"
+      class="input"
+      id="pensamento"
+      name="pensamento"
+      placeholder="Digite o pensamento"
+      [(ngModel)]="pensamentoModelo().conteudo"
+    />
+    <label for="autoria">Autoria</label>
+    <input
+      type="text"
+      class="input"
+      id="autoria"
+      name="autoria"
+      placeholder="Digite a autoria ou fonte"
+      [(ngModel)]="pensamentoModelo().autoria"
+    />
+    <label for="modelo">Selecione o modelo do card:</label>
+    <div class="container-radio">
+      <div class="radio-modelo">
+        <label for="modelo1">
+          <input
+            type="radio"
+            id="modelo1"
+            value="modelo1"
+            name="modelo-card"
+            [(ngModel)]="pensamentoModelo().modelo"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>modelo1</span>
+        </label>
+        Prévia:
+        <div class="modelo modelo1 ff-roboto-mono">
+          <img src="/img/modelo1.png" alt="Aspas coloridas" />
+          <p class="conteudo">
+            @if(pensamentoModelo().conteudo != '') {
+            {{ pensamentoModelo().conteudo }}
+            } @else {Aqui vai o pensamento}
+          </p>
+          <p class="autoria">
+            <b>
+              @if(pensamentoModelo().autoria != '') {
+              {{ pensamentoModelo().autoria }}
+              } @else {Aqui vai a autoria}
+            </b>
+          </p>
+          </div>
+      </div>
+      <div class="radio-modelo">
+        <label for="modelo2">
+          <input
+            type="radio"
+            id="modelo2"
+            value="modelo2"
+            name="modelo-card"
+            [(ngModel)]="pensamentoModelo().modelo"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>modelo2</span>
+        </label>
+        Prévia:
+        <div class="modelo modelo2 ff-roboto-mono">
+          <img src="/img/modelo2.png" alt="Aspas coloridas" />
+          <p class="conteudo">
+            @if(pensamentoModelo().conteudo != '') {
+            {{ pensamentoModelo().conteudo }}
+            } @else {Aqui vai o pensamento}
+          </p>
+          <p class="autoria">
+            <b>
+              @if(pensamentoModelo().autoria != '') {
+              {{ pensamentoModelo().autoria }}
+              } @else {Aqui vai a autoria}
+            </b>
+          </p>
+          </div>
+      </div>
+      <div class="radio-modelo">
+        <label for="modelo3">
+          <input
+            type="radio"
+            id="modelo3"
+            value="modelo3"
+            name="modelo-card"
+            [(ngModel)]="pensamentoModelo().modelo"
+          />
+          <div class="custom-radio">
+            <span></span>
+          </div>
+          <span>modelo3</span>
+        </label>
+        Prévia:
+        <div class="modelo modelo3 ff-roboto-mono">
+          <img src="/img/modelo3.png" alt="Aspas coloridas" />
+          <p class="conteudo">
+            @if(pensamentoModelo().conteudo != '') {
+            {{ pensamentoModelo().conteudo }}
+            } @else {Aqui vai o pensamento}
+          </p>
+          <p class="autoria">
+            <b>
+              @if(pensamentoModelo().autoria != '') {
+              {{ pensamentoModelo().autoria }}
+              } @else {Aqui vai a autoria}
+            </b>
+          </p>
+          </div>
+      </div>
+    </div>
+    <div class="acoes">
+      <button class="botao" (click)="editarPensamentoModelo()">Salvar</button>
+      <button
+        class="botao"
+        (click)="cancelarPensamentoModelo()"
+        routerLink="/listar-pensamentos"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</section>

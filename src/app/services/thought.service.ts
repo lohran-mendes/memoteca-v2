@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { type Thougth } from '../interfaces/thought';
+import { type Thought as Thought } from '../interfaces/thought';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,20 +10,25 @@ export class ThoughtService {
   private httpClient = inject(HttpClient);
   private readonly API = 'http://localhost:3000/pensamentos';
 
-  listThoughts(): Observable<Thougth[]>{
-    return this.httpClient.get<Thougth[]>(this.API)
+  listThoughts(): Observable<Thought[]>{
+    return this.httpClient.get<Thought[]>(this.API)
   }
-  createThought(newThought: Thougth): Observable<Thougth>{
-    return this.httpClient.post<Thougth>(this.API, newThought);
-  }
-
-  deleteThought(id: number): Observable<Thougth>{
-    const url = `${this.API}/${id}`;
-    return this.httpClient.delete<Thougth>(url);
+  createThought(newThought: Thought): Observable<Thought>{
+    return this.httpClient.post<Thought>(this.API, newThought);
   }
 
-  searchThought(id: number): Observable<Thougth>{
+  editThought(thought: Thought): Observable<Thought> {
+    const url = `${this.API}/${thought.id}`;
+    return this.httpClient.put<Thought>(url, thought)
+  }
+
+  deleteThought(id: number): Observable<Thought>{
     const url = `${this.API}/${id}`;
-    return this.httpClient.get<Thougth>(url);
+    return this.httpClient.delete<Thought>(url);
+  }
+
+  searchThought(id: number): Observable<Thought>{
+    const url = `${this.API}/${id}`;
+    return this.httpClient.get<Thought>(url);
   }
 }
