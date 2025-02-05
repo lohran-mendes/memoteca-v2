@@ -6,7 +6,7 @@ import { ThoughtService } from '../../../services/thought.service';
 
 @Component({
   selector: 'app-list-thought',
-  imports: [RouterLink, ThoughtComponent, ThoughtComponent],
+  imports: [RouterLink, ThoughtComponent],
   templateUrl: './list-thought.component.html',
   styleUrl: './list-thought.component.css',
 })
