@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { type Thougth } from '../../../interfaces/thought';
+import { type Thought } from '../../../interfaces/thought';
 import { ThoughtService } from '../../../services/thought.service';
 @Component({
   selector: 'app-create-thought',
@@ -12,7 +12,7 @@ import { ThoughtService } from '../../../services/thought.service';
 export class CreateThoughtComponent {
   thoughtService = inject(ThoughtService);
   router = inject(Router)
-  pensamentoModelo = signal<Thougth>({
+  pensamentoModelo = signal<Thought>({
     conteudo: '',
     autoria: '',
     modelo: '',

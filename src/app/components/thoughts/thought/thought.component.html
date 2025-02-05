@@ -17,7 +17,7 @@ class="ff-roboto-mono pensamento"
   </p>
   <div class="acoes">
     <button class="botao-editar">
-      <img src="/img/icone-editar.png" alt="botão de editar" />
+      <img src="/img/icone-editar.png" alt="botão de editar" routerLink="/pensamentos/editar-pensamentos/{{enteredThought().id}}"/>
     </button>
     <button class="botao-excluir" routerLink="/pensamentos/deletar-pensamentos/{{enteredThought().id}}">
       <img src="/img/icone-excluir.png" alt="botão de excluir" />
