@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, input, WritableSignal } from '@angular/core';
-import { type Thougth } from '../../../interfaces/thought';
+import { type Thought } from '../../../interfaces/thought';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './thought.component.css',
 })
 export class ThoughtComponent {
-  enteredThought = input.required<Thougth>();
+  enteredThought = input.required<Thought>();
 
   getWidthClass() {
     if (this.enteredThought().conteudo.length >= 256) {

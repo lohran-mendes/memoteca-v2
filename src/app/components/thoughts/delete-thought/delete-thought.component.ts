@@ -1,5 +1,5 @@
 import { Component, Inject, inject, OnInit, signal } from '@angular/core';
-import { type Thougth } from '../../../interfaces/thought';
+import { type Thought } from '../../../interfaces/thought';
 import { ThoughtService } from '../../../services/thought.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class DeleteThoughtComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
 
-  thought = signal<Thougth>({
+  thought = signal<Thought>({
     autoria: '',
     conteudo: '',
     modelo: '',

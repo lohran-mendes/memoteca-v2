@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ThoughtComponent } from '../thought/thought.component';
-import { type Thougth } from '../../../interfaces/thought';
+import { type Thought } from '../../../interfaces/thought';
 import { ThoughtService } from '../../../services/thought.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { ThoughtService } from '../../../services/thought.service';
 })
 export class ListThoughtComponent implements OnInit {
   thoughtService = inject(ThoughtService);
-  listThought?: Thougth[] = [];
+  listThought?: Thought[] = [];
 
   ngOnInit(): void {
       this.thoughtService.listThoughts().subscribe({

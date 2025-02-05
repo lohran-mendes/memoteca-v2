@@ -1,4 +1,4 @@
-export interface Thougth {
+export interface Thought {
   id?: number;
   conteudo: string;
   autoria: string;
