@@ -16,4 +16,6 @@
       <p>Ainda não há pensamentos cadastrados!</p>
     </div>
   }
+  <app-load-more-button [hasMoreThoughts]="hasMoreThoughts"
+  (click)="LoadMoreThoughts()"></app-load-more-button>
 </section>
