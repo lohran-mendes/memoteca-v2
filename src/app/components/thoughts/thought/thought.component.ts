@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, input, WritableSignal } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { type Thought } from '../../../interfaces/thought';
 import { RouterLink } from '@angular/router';
 

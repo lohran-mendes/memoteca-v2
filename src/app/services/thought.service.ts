@@ -10,12 +10,15 @@ export class ThoughtService {
   private httpClient = inject(HttpClient);
   private readonly API = 'http://localhost:3000/pensamentos';
 
-  listThoughts(page: number): Observable<Thought[]> {
+  listThoughts(page: number, filter: string): Observable<Thought[]> {
     const itensForPage: number = 6;
-    const params = new HttpParams()
+    let params = new HttpParams()
       .set('_page', page)
       .set('_limit', itensForPage);
 
+    if(filter.trim().length > 2){
+    params = params.set('q', filter)
+    }
     // Retorno da documentação da API de como retornar os itens páginados
     // GET /posts?_page=7&_limit=20
     // Modo alternativo usando template strings para retornar os itens páginados
