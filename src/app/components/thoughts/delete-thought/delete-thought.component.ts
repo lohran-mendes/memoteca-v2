@@ -1,4 +1,4 @@
-import { Component, Inject, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { type Thought } from '../../../interfaces/thought';
 import { ThoughtService } from '../../../services/thought.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,6 +18,7 @@ export class DeleteThoughtComponent implements OnInit {
     conteudo: '',
     modelo: '',
     id: 0,
+    favorito: false
   });
 
   ngOnInit(): void {

@@ -2,25 +2,37 @@
   <header class="header">
     <h2>Adicione um <br />pensamento novo:</h2>
   </header>
-  <form>
+  <form [formGroup]="formulario">
     <label for="pensamento">Pensamento</label>
     <input
       type="textarea"
       class="input"
       id="pensamento"
-      name="pensamento"
+      formControlName="conteudo"
       placeholder="Digite o pensamento"
-      [(ngModel)]="pensamentoModelo().conteudo"
     />
+    @if(formulario.get('conteudo')?.errors && formulario.get('conteudo')?.touched){    
+      <div class="mensagem__erro">
+        Pensamento é obrigatório!
+      </div>
+    }
     <label for="autoria">Autoria</label>
     <input
       type="text"
       class="input"
       id="autoria"
-      name="autoria"
+      formControlName="autoria"
       placeholder="Digite a autoria ou fonte"
-      [(ngModel)]="pensamentoModelo().autoria"
     />
+    @if(formulario.get('autoria')?.errors?.['required'] && formulario.get('autoria')?.touched){    
+      <div class="mensagem__erro">
+        Autoria é obrigatório!
+      </div>
+    } @else if(formulario.get('autoria')?.errors?.['minlength']  && formulario.get('autoria')?.touched){
+      <div class="mensagem__erro">
+        Autoria tem que ter no mínimo 3 caracteres!
+      </div>
+    }
     <label for="modelo">Selecione o modelo do card:</label>
     <div class="container-radio">
       <div class="radio-modelo">
@@ -29,8 +41,7 @@
             type="radio"
             id="modelo1"
             value="modelo1"
-            name="modelo-card"
-            [(ngModel)]="pensamentoModelo().modelo"
+            formControlName="modelo"
           />
           <div class="custom-radio">
             <span></span>
@@ -41,14 +52,14 @@
         <div class="modelo modelo1 ff-roboto-mono">
           <img src="/img/modelo1.png" alt="Aspas coloridas" />
           <p class="conteudo">
-            @if(pensamentoModelo().conteudo != '') {
-            {{ pensamentoModelo().conteudo }}
+             @if(formulario.get('conteudo')?.value != '') {
+            {{ formulario.get('conteudo')?.value }}
             } @else {Aqui vai o pensamento}
           </p>
           <p class="autoria">
             <b>
-              @if(pensamentoModelo().autoria != '') {
-              {{ pensamentoModelo().autoria }}
+              @if(formulario.get('autoria')?.value != '') {
+              {{ formulario.get('autoria')?.value }}
               } @else {Aqui vai a autoria}
             </b>
           </p>
@@ -60,8 +71,7 @@
             type="radio"
             id="modelo2"
             value="modelo2"
-            name="modelo-card"
-            [(ngModel)]="pensamentoModelo().modelo"
+            formControlName="modelo"
           />
           <div class="custom-radio">
             <span></span>
@@ -72,14 +82,14 @@
         <div class="modelo modelo2 ff-roboto-mono">
           <img src="/img/modelo2.png" alt="Aspas coloridas" />
           <p class="conteudo">
-            @if(pensamentoModelo().conteudo != '') {
-            {{ pensamentoModelo().conteudo }}
+             @if(formulario.get('conteudo')?.value != '') {
+            {{ formulario.get('conteudo')?.value }}
             } @else {Aqui vai o pensamento}
           </p>
           <p class="autoria">
             <b>
-              @if(pensamentoModelo().autoria != '') {
-              {{ pensamentoModelo().autoria }}
+              @if(formulario.get('autoria')?.value != '') {
+              {{ formulario.get('autoria')?.value }}
               } @else {Aqui vai a autoria}
             </b>
           </p>
@@ -91,8 +101,7 @@
             type="radio"
             id="modelo3"
             value="modelo3"
-            name="modelo-card"
-            [(ngModel)]="pensamentoModelo().modelo"
+            formControlName="modelo"
           />
           <div class="custom-radio">
             <span></span>
@@ -103,14 +112,14 @@
         <div class="modelo modelo3 ff-roboto-mono">
           <img src="/img/modelo3.png" alt="Aspas coloridas" />
           <p class="conteudo">
-            @if(pensamentoModelo().conteudo != '') {
-            {{ pensamentoModelo().conteudo }}
+             @if(formulario.get('conteudo')?.value != '') {
+            {{ formulario.get('conteudo')?.value }}
             } @else {Aqui vai o pensamento}
           </p>
           <p class="autoria">
             <b>
-              @if(pensamentoModelo().autoria != '') {
-              {{ pensamentoModelo().autoria }}
+              @if(formulario.get('autoria')?.value != '') {
+              {{ formulario.get('autoria')?.value }}
               } @else {Aqui vai a autoria}
             </b>
           </p>
@@ -118,7 +127,7 @@
       </div>
     </div>
     <div class="acoes">
-      <button class="botao" (click)="editarPensamentoModelo()">Salvar</button>
+      <button class="botao" (click)="editarPensamentoModelo()" [disabled]="!formulario.valid" >Salvar</button>
       <button
         class="botao"
         (click)="cancelarPensamentoModelo()"

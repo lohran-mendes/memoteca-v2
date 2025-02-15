@@ -36,7 +36,7 @@ h2 {
   margin-left: auto;
 }
 
-.botao {
+.botao:not([disabled]) {
   background: #154580;
   color: #ffffff;
   max-width: 270px;
@@ -48,9 +48,21 @@ h2 {
   transition: 0.5s ease;
 }
 
-.botao:hover {
+.botao:not([disabled]):hover {
   border: 2px solid #84EEC1;
   color: #84EEC1;
+}
+
+button:disabled {
+  background-color: #7A7F87;
+  color: #FFFFFF;
+  max-width: 270px;
+  width: 250px;
+  padding: 1rem;
+  margin: 0 auto;
+  border: 2px solid #C4C4C4;
+  border-radius: 10px;
+  transition: 0.5s ease;
 }
 
 @media (min-width: 576px) {
