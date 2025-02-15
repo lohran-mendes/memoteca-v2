@@ -18,6 +18,7 @@ export class DeleteThoughtComponent implements OnInit {
     conteudo: '',
     modelo: '',
     id: 0,
+    favorito: false
   });
 
   ngOnInit(): void {

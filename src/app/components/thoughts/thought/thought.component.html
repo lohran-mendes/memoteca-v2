@@ -1,13 +1,10 @@
-<div
-class="ff-roboto-mono pensamento"
-[ngClass]="dynamicClasses"
->
+<div class="ff-roboto-mono pensamento" [ngClass]="dynamicClasses">
   <img src="/img/{{ enteredThought().modelo }}.png" alt="Aspas coloridas" />
   <p class="conteudo">
     @if(enteredThought().conteudo != '') {
     {{ enteredThought().conteudo }}
     } @else {Aqui vai o pensamento}
-  </p>  
+  </p>
   <p class="autoria">
     <b>
       @if(enteredThought().autoria != '') {
@@ -16,10 +13,23 @@ class="ff-roboto-mono pensamento"
     </b>
   </p>
   <div class="acoes">
-    <button class="botao-editar">
-      <img src="/img/icone-editar.png" alt="botão de editar" routerLink="/pensamentos/editar-pensamentos/{{enteredThought().id}}"/>
+    <button class="botao-favorito" (click)="updateFavorite()">
+      <img
+        src="/img/icone-favorito-{{ changeFavoriteIcon() }}.png"
+        alt="botão de favoritar"
+      />
     </button>
-    <button class="botao-excluir" routerLink="/pensamentos/deletar-pensamentos/{{enteredThought().id}}">
+    <button class="botao-editar">
+      <img
+        src="/img/icone-editar.png"
+        alt="botão de editar"
+        routerLink="/pensamentos/editar-pensamentos/{{ enteredThought().id }}"
+      />
+    </button>
+    <button
+      class="botao-excluir"
+      routerLink="/pensamentos/deletar-pensamentos/{{ enteredThought().id }}"
+    >
       <img src="/img/icone-excluir.png" alt="botão de excluir" />
     </button>
   </div>

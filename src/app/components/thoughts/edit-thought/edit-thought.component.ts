@@ -14,17 +14,18 @@ export class EditThoughComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
   formBuilder = inject(FormBuilder);
-
+  hasFavorite = signal<boolean>(false);
   formulario!: FormGroup;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.thoughtService.searchThought(Number(id)).subscribe({
-        next: ({conteudo, autoria, modelo}) => {
+        next: ({conteudo, autoria, modelo, favorito}) => {
           this.formulario.get('conteudo')?.setValue(conteudo);
           this.formulario.get('autoria')?.setValue(autoria);
           this.formulario.get('modelo')?.setValue(modelo);
+          this.hasFavorite.set(favorito);
         },
       });
     }
@@ -41,7 +42,8 @@ export class EditThoughComponent implements OnInit {
         Validators.compose([Validators.required, Validators.minLength(3)]),
       ],
       modelo: ['modelo1'],
-      id: [id]
+      id: [id],
+      favorito: [this.hasFavorite()]
     });
   }
 

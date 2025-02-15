@@ -10,19 +10,26 @@ export class ThoughtService {
   private httpClient = inject(HttpClient);
   private readonly API = 'http://localhost:3000/pensamentos';
 
-  listThoughts(page: number, filter: string): Observable<Thought[]> {
+  // Retorno da documentação da API de como retornar os itens páginados
+  // GET /posts?_page=7&_limit=20
+  // Modo alternativo usando template strings para retornar os itens páginados
+  // return this.httpClient.get<Thought[]>(`${this.API}?_page=${page}&_limit=${itensForPage}`)
+
+  listThoughts(
+    page: number,
+    filter: string,
+    isFavorite: boolean
+  ): Observable<Thought[]> {
     const itensForPage: number = 6;
     let params = new HttpParams()
       .set('_page', page)
       .set('_limit', itensForPage);
-
-    if(filter.trim().length > 2){
-    params = params.set('q', filter)
+    if (isFavorite === true) {
+      params = params.set('favorito', true);
     }
-    // Retorno da documentação da API de como retornar os itens páginados
-    // GET /posts?_page=7&_limit=20
-    // Modo alternativo usando template strings para retornar os itens páginados
-    // return this.httpClient.get<Thought[]>(`${this.API}?_page=${page}&_limit=${itensForPage}`)
+    if (filter.trim().length > 2) {
+      params = params.set('q', filter);
+    }
     return this.httpClient.get<Thought[]>(this.API, { params });
   }
   createThought(newThought: Thought): Observable<Thought> {
@@ -42,5 +49,10 @@ export class ThoughtService {
   searchThought(id: number): Observable<Thought> {
     const url = `${this.API}/${id}`;
     return this.httpClient.get<Thought>(url);
+  }
+
+  toggleFavorite(thought: Thought): Observable<Thought> {
+    thought.favorito = !thought.favorito;
+    return this.editThought(thought);
   }
 }
